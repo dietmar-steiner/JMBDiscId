@@ -85,7 +85,7 @@ public class JMBDiscId {
      * @param drive path to the drive with the audio CD
      * @return the FreeDB DiscId or <code>null</code> if unsuccessful
      */
-    public String getFreeDId(String drive) {
+    public String getFreeDBId(String drive) {
         String ret = null;
         boolean success = libDiscId.discid_read(disc, drive);
         if (!success) {
