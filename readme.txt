@@ -8,6 +8,8 @@ libdiscid url: http://musicbrainz.org/doc/libdiscid
 
 I thank all of this people and organisations for having helped to make this project possible.
 
+A special thanks to Western Waves Community Radio, Bundoran, Ireland for sponsoring the project.
+
 At the moment there is 1 problem as I only have a windows environment.
 So I cannot test in either Unix.
 If anyone uses this software on an Unix system please let me know, so I can update 
