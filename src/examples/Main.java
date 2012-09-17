@@ -47,7 +47,7 @@ public class Main {
             JMBDiscId discId = new JMBDiscId();
             if (discId.init(args[0])) {
                 System.out.println("MusicBrainz DiscID: " + discId.getDiscId(args[1]));
-                System.out.println("FreeDB DiscID: " + discId.getFreeDId(args[1]));
+                System.out.println("FreeDB DiscID: " + discId.getFreeDBId(args[1]));
                 System.out.println("Submission Url: " + discId.getSubmissionUrl(args[1]));
             } else {
                 ret = 2;
