@@ -58,7 +58,7 @@ public class JMBDiscId {
                     log.fatal("Check you running are the correct library for your architecture: 64 or 32 bit", ex);
                 }
             }
-            if (libDiscId != null & disc == null) {
+            if (libDiscId != null && disc == null) {
                 disc = disc = libDiscId.discid_new();
             }
         }
