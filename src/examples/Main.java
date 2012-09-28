@@ -49,6 +49,7 @@ public class Main {
                 System.out.println("MusicBrainz DiscID: " + discId.getDiscId(args[1]));
                 System.out.println("FreeDB DiscID: " + discId.getFreeDBId(args[1]));
                 System.out.println("Submission Url: " + discId.getSubmissionUrl(args[1]));
+                System.out.println("DataUrl: " + discId.getDiscIdLookupUrl(args[1]));
             } else {
                 ret = 2;
             }
