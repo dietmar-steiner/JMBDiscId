@@ -25,9 +25,23 @@ package org.musicbrainz.discid;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
 import com.sun.jna.Pointer;
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -40,8 +54,8 @@ public class JMBDiscId {
     private Pointer disc = null;
 
     /**
-     * Loads the library only when it is not already loaded
-     * and allocates a local disc object;
+     * Loads the library only when it is not already loaded and allocates a
+     * local disc object;
      *
      *
      * @param path path to libdiscid library
@@ -65,7 +79,9 @@ public class JMBDiscId {
         return libDiscId != null;
     }
 
-    /** Reads the disc and generates a MusicBrainz DiscId
+    /**
+     * Reads the disc and generates a MusicBrainz DiscId
+     *
      * @param drive path to the drive with the audio CD
      * @return the MusicBrainz DiscId or <code>null</code> if unsuccessful
      */
@@ -82,6 +98,7 @@ public class JMBDiscId {
 
     /**
      * Reads the disc and generates a FreeDB DiscId
+     *
      * @param drive path to the drive with the audio CD
      * @return the FreeDB DiscId or <code>null</code> if unsuccessful
      */
@@ -98,8 +115,10 @@ public class JMBDiscId {
 
     /**
      * Reads the drive and generates a MusicBrainz submittion url
+     *
      * @param drive path to the drive with the audio CD
-     * @return the MusicBrainz submition url or <code>null</code> if unsuccessful
+     * @return the MusicBrainz submition url or <code>null</code> if
+     * unsuccessful
      */
     public String getSubmissionUrl(String drive) {
         String ret = null;
@@ -113,6 +132,24 @@ public class JMBDiscId {
 
     }
 
+    /**
+     * Reads the drive and generates a MusicBrainz DiscId lookup url.
+     *
+     * @param drive path to the drive with the audio CD
+     * @return the MusicBrainz discId lookup url or <code>null</code> if
+     * unsuccessful
+     */
+    public String getDiscIdLookupUrl(String drive) {
+        String ret = null;
+        String discId = getDiscId(drive);
+        String toc = getSubmissionUrl(drive);
+        if (discId != null && toc != null) {
+            toc = toc.substring(toc.indexOf('&'));
+            ret = "http://www.musicbrainz.org/ws/2/discid/" + discId + "?" + toc;
+        }
+        return ret;
+    }
+
     @Override
     protected void finalize() {
         if (null != disc) {
@@ -123,7 +160,7 @@ public class JMBDiscId {
 }
 
 /**
- *   Library function linking
+ * Library function linking
  */
 interface LibDiscId extends Library {
 
