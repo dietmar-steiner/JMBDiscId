@@ -1,8 +1,8 @@
 package examples;
 
+import com.axokoi.discid.JMBDiscId;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import com.axokoi.discid.JMBDiscId;
 
 /*
  * Copyright (C) 2012 Dietmar Steiner <jmusicbrainz [at] d-steiner.com>.
@@ -22,9 +22,9 @@ import com.axokoi.discid.JMBDiscId;
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA 02110-1301  USA
  */
+
 /**
- *
- * @author Dietmar Steiner <jmusicbrainz [at] d-steiner.com>
+ * @author Dietmar Steiner
  */
 public class Main {
 
@@ -34,7 +34,7 @@ public class Main {
      * This class is an example on how to use JMBDiscId.
      *
      * @param args args[0] contains the full path to the library file. args[1]
-     * contains the path to the cd drive
+     *             contains the path to the cd drive
      */
     public static void main(String[] args) {
         int ret = 0;
