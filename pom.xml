@@ -6,7 +6,7 @@
 
     <groupId>com.axokoi</groupId>
     <artifactId>JMBDiscId</artifactId>
-    <version>1.0.1</version>
+    <version>2.0.0-SNAPSHOT</version>
     <name>JMBDiscId</name>
     <description>A java interface for the MusicBrainz libdiscid</description>
     <url>https://github.com/AxoKoi/JMBDiscId</url>
